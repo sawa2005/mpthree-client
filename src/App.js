@@ -3,25 +3,28 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [audios, setAudios] = React.useState([]);
 
   React.useEffect(() => {
     fetch("/api/get-all")
       .then((res) => res.json())
       .then((data) => {
-        let files = data;
-
-        files.map(function(file) {
-          setData(file.fileName);
-        })
+        setAudios(data);
       });
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
+        <h1>mpthree</h1>
+        {audios.map(audio => {
+          return <div>
+            <h3>{audio.songName} - {audio.artistName}</h3>
+            <audio controls>
+              <source src={audio.path} type="audio/mpeg"></source>
+            </audio>
+          </div>
+        })}
       </header>
     </div>
   );
