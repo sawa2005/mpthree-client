@@ -32,9 +32,14 @@ function App() {
         {audios.map(audio => {
           return <div>
             <h3>{audio.songName} - {audio.artistName}</h3>
-            <audio controls>
-              <source src={audio.path} type="audio/mpeg"></source>
-            </audio>
+            <audio src={"//localhost:3001/" + audio.fileName} controls controlsList="nodownload"></audio>
+            <button onClick={() => {
+              fetch("//localhost:3001/api/delete/" + audio._id, { method: 'DELETE' })
+                .then(response => response.text())
+                .catch(error => {
+                  console.error(error);
+                });
+              }}>Delete</button>
           </div>
         })}
       </header>
