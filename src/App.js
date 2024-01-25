@@ -24,8 +24,6 @@ function App() {
           <input id="songName" name="songName" type="text" /><br />
           <label for="artistName">artist name: </label>
           <input id="artistName" name="artistName" type="text" /><br />
-          <label for="duration">duration (delete this later): </label>
-          <input id="duration" name="duration" type="text" /><br />
           <input type="submit" value="Upload" />
         </form>
         <h2>Uploaded mpthrees</h2>
