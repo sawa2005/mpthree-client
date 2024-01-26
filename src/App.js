@@ -1,11 +1,14 @@
 import React from "react";
+import { useEffect, useState } from "react"
 import logo from './logo.svg';
 import './App.css';
+import { NewAudioForm } from "./NewAudioForm";
+import { AudioList } from "./AudioList";
 
 function App() {
-  const [audios, setAudios] = React.useState([]);
+  const [audios, setAudios] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/api/get-all")
       .then((res) => res.json())
       .then((data) => {
@@ -13,33 +16,19 @@ function App() {
       });
   }, []);
 
+  function deleteAudio(id) {
+    setAudios(currentAudios => {
+      return currentAudios.filter(audio => audio._id !== id)
+    })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>mpthree</h1>
-        <form action="/api/post" method="post" enctype="multipart/form-data">
-          <label for="file">file: </label>
-          <input id="file" name="mp3" type="file" /><br />
-          <label for="songName">song name: </label>
-          <input id="songName" name="songName" type="text" /><br />
-          <label for="artistName">artist name: </label>
-          <input id="artistName" name="artistName" type="text" /><br />
-          <input type="submit" value="Upload" />
-        </form>
+        <NewAudioForm />
         <h2>Uploaded mpthrees</h2>
-        {audios.map(audio => {
-          return <div>
-            <h3>{audio.songName} - {audio.artistName}</h3>
-            <audio src={"//localhost:3001/" + audio.fileName} controls controlsList="nodownload"></audio>
-            <button onClick={() => {
-              fetch("//localhost:3001/api/delete/" + audio._id, { method: 'DELETE' })
-                .then(response => response.text())
-                .catch(error => {
-                  console.error(error);
-                });
-              }}>Delete</button>
-          </div>
-        })}
+        <AudioList audios={audios} deleteAudio={deleteAudio} />
       </header>
     </div>
   );
