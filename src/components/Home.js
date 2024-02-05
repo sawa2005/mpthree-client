@@ -48,7 +48,7 @@ export default function Home() {
                 : null}
             </div>
             <h1>mpthree</h1>
-            <NewAudioForm />
+            <NewAudioForm userId={currentUser.uid} />
             <h2>Uploaded mpthrees</h2>
             <AudioList audios={audios} deleteAudio={deleteAudio} />
         </header>
