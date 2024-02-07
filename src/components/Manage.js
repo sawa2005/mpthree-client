@@ -1,15 +1,31 @@
-import React, { useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+import { AudioList } from './AudioList'
 
 export default function Manage() {
+    const [audios, setAudios] = useState([]);
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfRef = useRef()
     const { signup, currentUser, updateEmail, updatePassword } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const navigate = useNavigate() 
+
+    useEffect(() => {
+        fetch("/api/get-all")
+        .then((res) => res.json())
+        .then((data) => {
+            setAudios(data);
+        });
+    }, []);
+
+    function deleteAudio(id) {
+        setAudios(currentAudios => {
+        return currentAudios.filter(audio => audio._id !== id)
+        })
+    }
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -42,7 +58,7 @@ export default function Manage() {
     return (
         <div className='signup'>
             <div>
-                <h2>Update Profile</h2>
+                <h2>Manage Profile</h2>
                 {error && <p className='error'>{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <label htmlFor='email'>Email</label>
@@ -53,6 +69,10 @@ export default function Manage() {
                     <input name='password-conf' type='password' ref={passwordConfRef} placeholder='Unchanged'></input><br />
                     <input type='submit' value='Update Profile' disabled={loading}/>
                 </form>
+            </div>
+            <div>
+              <h2>Manage Uploaded Audios</h2>
+              <AudioList audios={audios.filter((audio) => audio.uploaderId == currentUser.uid)} deleteAudio={deleteAudio} userId={currentUser.uid} />
             </div>
         </div>
     )

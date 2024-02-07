@@ -6,6 +6,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Manage from "./Manage";
 import ForgotPassword from "./ForgotPassword";
+import Audio from "./Audio";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
 import { Navigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -16,7 +17,6 @@ const Private = ({ Component }) => {
 }
 
 function App() {
-
   return (
     <div className="App">
         <Router>
@@ -27,6 +27,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/manage" element={<Private Component={Manage} />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/audio/:_id" element={<Audio />} />
             </Routes>
           </AuthProvider>
         </Router>
