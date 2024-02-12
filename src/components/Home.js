@@ -37,20 +37,28 @@ export default function Home() {
     }
 
     return (
-        <header className="App-header">
-            <div>
-                {error && <p className='error'>{error}</p>}
-                {currentUser ? 
-                    <div>
-                        <button onClick={handleLogout}>Log Out</button>
-                        <Link to="/manage">{currentUser.email}</Link>
-                    </div>
-                : null}
-            </div>
-            <h1>mpthree</h1>
+        <main className="App-main">
+            <header>
+                <h1>mpthree</h1>
+                <div>
+                    {error && <p className='error'>{error}</p>}
+                    {currentUser ? 
+                        <div>
+                            <p>Logged in as: {currentUser.email}</p>
+                            <div className="acc-nav">
+                                <button className="btn" onClick={handleLogout}>Log Out</button>
+                                <Link className="btn" to="/manage">Manage</Link>
+                            </div>
+                        </div>
+                    : <div className="acc-nav">
+                        <Link to="/login" className="btn">Log In</Link>
+                        <Link to="/signup" className="btn">Sign Up</Link>
+                    </div>}
+                </div>
+            </header>
             {currentUser ? <NewAudioForm userId={currentUser.uid} /> : <p>You have to be logged in before you can upload mpthrees</p>}
             <h2>Uploaded mpthrees</h2>
             <AudioList audios={audios} deleteAudio={deleteAudio} />
-        </header>
+        </main>
     )
 }
