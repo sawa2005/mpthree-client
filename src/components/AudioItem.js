@@ -17,7 +17,10 @@ export function AudioItem({ songName, artistName, fileName, _id, deleteAudio, us
     } else {
         return (
             <div className="audio">
-                <Link to={"/audio/" + _id}><h3>{songName} - {artistName}</h3></Link>
+                <Link to={"/audio/" + _id}>
+                    <h3>{songName}</h3>
+                    <h4>{artistName}</h4>
+                </Link>
                 <audio src={"//localhost:3001/" + fileName} controls controlsList="nodownload"></audio>
             </div>
         )
