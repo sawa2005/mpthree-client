@@ -56,24 +56,25 @@ export default function Manage() {
     }
 
     return (
-        <div className='signup'>
-            <div>
-                <h2>Manage Profile</h2>
-                {error && <p className='error'>{error}</p>}
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor='email'>Email</label>
-                    <input name='email' type='email' ref={emailRef} defaultValue={currentUser.email} required></input><br />
-                    <label htmlFor='password'>Password</label>
-                    <input name='password' type='password' ref={passwordRef} placeholder='Unchanged'></input><br />
-                    <label htmlFor='password-conf'>Confirm Password</label>
-                    <input name='password-conf' type='password' ref={passwordConfRef} placeholder='Unchanged'></input><br />
-                    <input type='submit' value='Update Profile' disabled={loading}/>
-                </form>
-            </div>
-            <div>
-              <h2>Manage Uploaded Audios</h2>
-              <AudioList audios={audios.filter((audio) => audio.uploaderId == currentUser.uid)} deleteAudio={deleteAudio} userId={currentUser.uid} />
-            </div>
+        <div className='main'>
+          <div>
+            <h1>manage</h1>
+            <Link className="btn" to="/">Return Home</Link>
+          </div>
+          <div>
+            <h2>profile</h2>
+            {error && <p className='error'>{error}</p>}
+            <form className="form" onSubmit={handleSubmit}>
+              <input name='email' type='email' ref={emailRef} defaultValue={currentUser.email} required></input>
+              <input name='password' type='password' ref={passwordRef} placeholder='Password Unchanged'></input>
+              <input name='password-conf' type='password' ref={passwordConfRef} placeholder='Confirm New Password'></input>
+              <input className="btn" type='submit' value='Update Profile' disabled={loading}/>
+            </form>
+          </div>
+          <div>
+            <h2>Manage Uploaded Mpthrees</h2>
+            <AudioList audios={audios.filter((audio) => audio.uploaderId == currentUser.uid)} deleteAudio={deleteAudio} userId={currentUser.uid} />
+          </div>
         </div>
     )
 }

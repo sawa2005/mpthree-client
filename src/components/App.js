@@ -19,18 +19,23 @@ const Private = ({ Component }) => {
 function App() {
   return (
     <div className="App">
-        <Router>
-          <AuthProvider>
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/manage" element={<Private Component={Manage} />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/audio/:_id" element={<Audio />} />
-            </Routes>
-          </AuthProvider>
-        </Router>
+        <main className="App-main">
+          <Router>
+            <AuthProvider>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/manage" element={<Private Component={Manage} />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/audio/:_id" element={<Audio />} />
+              </Routes>
+            </AuthProvider>
+          </Router>
+        </main>
+        <footer>
+          <p>mpthree - by <a href="https://slw.one/">Samuel Ward</a> (2024)</p>
+        </footer>
     </div>
   );
 }

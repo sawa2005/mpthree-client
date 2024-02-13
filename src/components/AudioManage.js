@@ -28,24 +28,24 @@ export default function AudioManage({ songName, artistName, _id, deleteAudio }) 
     }
 
     return (
-    <div>
-        <form id="manage-form" onSubmit={handleSubmit}>
-            <label htmlFor="songName">song name: </label>
-            <input id="songName" name="songName" type="text" defaultValue={songName} required/><br />
-            <label htmlFor="artistName">artist name: </label>
-            <input id="artistName" name="artistName" type="text" defaultValue={artistName} required/><br />
-            <input type="submit" value="Edit" />
-        </form>
-        <button onClick={() => {
-            deleteAudio(_id);
+    <div className='audio-manage'>
+        <form id="manage-form" className='audio-form' onSubmit={handleSubmit}>
+            <input id="songName" name="songName" type="text" defaultValue={songName} required/>
+            <input id="artistName" name="artistName" type="text" defaultValue={artistName} required/>
+            <div className='manage-controls'>
+                <input className= "btn" type="submit" value="Update" />
+                <button className="btn delete" type="button" onClick={() => {
+                    deleteAudio(_id);
 
-            fetch("//localhost:3001/api/delete/" + _id, { method: 'DELETE' })
-                .then(response => response.text())
-                .catch(error => {
-                    console.error(error);
-                });
-            }}>Delete
-        </button>
+                    fetch("//localhost:3001/api/delete/" + _id, { method: 'DELETE' })
+                        .then(response => response.text())
+                        .catch(error => {
+                            console.error(error);
+                        });
+                    }}>Delete
+                </button>
+            </div>
+        </form>
     </div>
     )
 }

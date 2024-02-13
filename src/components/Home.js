@@ -37,7 +37,7 @@ export default function Home() {
     }
 
     return (
-        <main className="App-main">
+        <div className='main'>
             <header>
                 <h1>mpthree</h1>
                 <div>
@@ -46,7 +46,7 @@ export default function Home() {
                         <div>
                             <p>Logged in as: {currentUser.email}</p>
                             <div className="acc-nav">
-                                <button className="btn" onClick={handleLogout}>Log Out</button>
+                                <button type="button" className="btn" onClick={handleLogout}>Log Out</button>
                                 <Link className="btn" to="/manage">Manage</Link>
                             </div>
                         </div>
@@ -57,8 +57,11 @@ export default function Home() {
                 </div>
             </header>
             {currentUser ? <NewAudioForm userId={currentUser.uid} /> : <p>You have to be logged in before you can upload mpthrees</p>}
-            <h2>Recently uploaded mpthrees</h2>
-            <AudioList audios={audios} deleteAudio={deleteAudio} />
-        </main>
+            <div>
+                <h2>Recently uploaded mpthrees</h2>
+                <AudioList audios={audios} deleteAudio={deleteAudio} />
+            </div>
+        </div>
+        
     )
 }
