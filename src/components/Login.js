@@ -29,18 +29,18 @@ export default function Login() {
     return (
         <div className='signup'>
             <div>
+                <h1>mpthree</h1>
+                <Link className="btn" to="/">Return Home</Link>
                 <h2>Log In</h2>
                 {error && <p className='error'>{error}</p>}
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor='email'>Email</label>
-                    <input name='email' type='email' ref={emailRef} required></input><br />
-                    <label htmlFor='password'>Password</label>
-                    <input name='password' type='password' ref={passwordRef} required></input><br />
-                    <input type='submit' value='Log In' disabled={loading}/>
-                </form>
+                <form className='form' onSubmit={handleSubmit}>
+                    <input name='email' type='email' ref={emailRef} placeholder='Email' required></input>
+                    <input name='password' type='password' ref={passwordRef} placeholder='Password' required></input>
+                    <input className='btn' type='submit' value='Log In' disabled={loading}/>
+                </form><br />
                 <div>
                     <Link to="/forgot-password">Forgot Password?</Link>
-                </div>
+                </div><br />
             </div>
             <div>
                 Don't have an account? <Link to="/signup">Sign Up</Link>

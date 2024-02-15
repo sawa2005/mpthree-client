@@ -29,18 +29,17 @@ export default function ForgotPassword() {
     return (
         <div className='signup'>
             <div>
+                <h1>mpthree</h1>
+                <Link className="btn" to="/">Return Home</Link>
                 <h2>Reset Password</h2>
                 {error && <p className='error'>{error}</p>}
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor='email'>Email</label>
-                    <input name='email' type='email' ref={emailRef} required></input><br />
-                    <input type='submit' value='Reset Password' disabled={loading}/>
-                </form>
+                <form className='form' onSubmit={handleSubmit}>
+                    <input name='email' type='email' ref={emailRef} placeholder='Email' required></input>
+                    <input className='btn' type='submit' value='Reset Password' disabled={loading}/>
+                </form><br />
                 {message && <p className='success'>{message}</p>}
-                <div>
-                    <Link to="/login">Cancel</Link>
-                </div>
-            </div>
+                <Link className='btn' to="/login">Cancel</Link>
+            </div><br />
             <div>
                 Don't have an account? <Link to="/signup">Sign Up</Link>
             </div>

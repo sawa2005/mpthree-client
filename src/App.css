@@ -97,6 +97,7 @@ audio {
   position: relative;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .audio-wrap {
@@ -136,6 +137,7 @@ audio::-webkit-media-controls-enclosure {
 .App-main {
   margin-bottom: 90px;
   min-height: 100vh;
+  padding: 30px;
 }
 
 .main {
