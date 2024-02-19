@@ -230,6 +230,10 @@ audio::-webkit-media-controls-enclosure {
   font-size: 1rem;
 }
 
+.file-input {
+  display: none;
+}
+
 input::file-selector-button {
   background-color: #D9D9D9;
   padding: 13px;
@@ -238,6 +242,25 @@ input::file-selector-button {
   color: black;
   transition: all 0.3s ease;
   margin-right: 15px;
+}
+
+.input-wrap {
+  display: flex;
+  border: 2px solid #EAEAEA;
+  border-radius: 5px;
+  gap: 15px;
+  align-items: center;
+}
+
+.input-wrap p {
+  margin: 0;
+  font-family: 'Almarai', sans-serif;
+  font-size: 1rem;
+  color: #858585;
+}
+
+#mp3-label, #image-label {
+  margin: 0;
 }
 
 footer {
