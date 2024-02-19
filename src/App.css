@@ -121,6 +121,7 @@ audio::-webkit-media-controls-enclosure {
   width: 81px;
   height: 81px;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 .audio-list {
