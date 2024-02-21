@@ -203,10 +203,120 @@ audio::-webkit-media-controls-enclosure {
   margin: 0;
 }
 
+.audio-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls {
+  display: flex;
+  height: fit-content;
+  gap: 15px;
+}
+
+.controls button {
+  height: fit-content;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .manage-controls {
   display: flex;
   justify-content: center;
   gap: 44px;
+}
+
+.volume {
+  height: fit-content;
+}
+
+.volume-slider {
+  position: absolute;
+  background-color: #fff;
+  padding: 5px;
+  border: 2px solid #EAEAEA;
+  border-radius: 5px;
+  right: 0;
+  bottom: 0;
+}
+
+.progress-wrap {
+  display: flex;
+  justify-content: space-between;
+  color: #858585;
+  font-size: 12px;
+  align-items: center;
+  height: 16px;
+}
+
+.progress-time {
+  min-width: 70px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #D9D9D9;
+  height: 100%;
+  border-radius: 15px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: -157px 0 0 150px #858585;
+  border: 2px solid #000;
+  background-color: #fff;
+  height: 15px;
+  width: 15px;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  background-color: #000;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background-color: #000;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #D9D9D9;
+  height: 100%;
+  border-radius: 15px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  box-shadow: -157px 0 0 150px #858585;
+  border: 2px solid #000;
+  background-color: #fff;
+  height: 13px;
+  width: 13px;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  background-color: #000;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background-color: #000;
 }
 
 .delete {
