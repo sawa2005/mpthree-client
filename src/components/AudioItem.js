@@ -5,7 +5,7 @@ import AudioControls from "./AudioControls"
 import ProgressBar from "./ProgressBar"
 
 export function AudioItem({ songName, artistName, fileName, _id, deleteAudio, userId, uploaderId, imageName }) {
-    const [show, setShow] = useState(false)
+    const [showManage, setShowManage] = useState(false)
     const [timeElapsed, setTimeElapsed] = useState(0)
     const [duration, setDuration] = useState(0)
 
@@ -28,13 +28,13 @@ export function AudioItem({ songName, artistName, fileName, _id, deleteAudio, us
                             <h3>{songName}</h3>
                             <h4>{artistName}</h4>
                         </Link>
-                        <AudioControls audioRef={audioRef} progressRef={progressRef} duration={duration} setTimeElapsed={setTimeElapsed} userId={userId} uploaderId={uploaderId} />
+                        <AudioControls audioRef={audioRef} progressRef={progressRef} duration={duration} setTimeElapsed={setTimeElapsed} userId={userId} uploaderId={uploaderId} showManage={showManage} setShowManage={setShowManage} />
                     </div>
                     <ProgressBar progressRef={progressRef} audioRef={audioRef} timeElapsed={timeElapsed} duration={duration} />
                 </div>
                 <audio src={"//localhost:3001/" + fileName} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
             </div>
-            {show ? <AudioManage songName={songName} artistName={artistName} deleteAudio={deleteAudio} _id={_id} /> : null}
+            {showManage ? <AudioManage songName={songName} artistName={artistName} deleteAudio={deleteAudio} _id={_id} /> : null}
         </div>
     )
 }

@@ -9,7 +9,7 @@ import {
 import VolumeIcon from './VolumeIcon'
 import { IconContext } from 'react-icons'
 
-export default function AudioControls({ progressRef, audioRef, setTimeElapsed, duration, userId, uploaderId }) {
+export default function AudioControls({ progressRef, audioRef, setTimeElapsed, duration, userId, uploaderId, showManage, setShowManage }) {
     const [isPlaying, setIsPlaying] = useState(false)
     const [volume, setVolume] = useState(70)
     const [show, setShow] = useState(false)
@@ -60,7 +60,7 @@ export default function AudioControls({ progressRef, audioRef, setTimeElapsed, d
             <IconContext.Provider value={{ size: 24, className: "react-icons" }}>
                 { userId === uploaderId ?
                     <div className='edit'>
-                        <button type="button" /* onClick={() => {setShow(!show)}} */>
+                        <button type="button" onClick={() => {setShowManage(!showManage)}}>
                             <FiEdit />
                         </button>
                     </div> : null
