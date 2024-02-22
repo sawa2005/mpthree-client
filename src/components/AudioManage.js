@@ -7,8 +7,8 @@ export default function AudioManage({ songName, artistName, _id, deleteAudio }) 
     async function handleSubmit(e) {
         e.preventDefault()
 
-        var formEl = document.getElementById('manage-form')
-        var formData = new FormData(formEl)
+        let formEl = document.getElementById('manage-form')
+        let formData = new FormData(formEl)
 
         console.log(JSON.stringify(Object.fromEntries(formData)))
 

@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react'
+import { Helmet } from  'react-helmet-async'
 import { Link, useParams } from 'react-router-dom'
 
 export default function Audio() {
@@ -16,6 +17,9 @@ export default function Audio() {
 
     return (
         <div className='main'>
+            <Helmet>
+                <title>{`${audio.songName} - mpthree`}</title>
+            </Helmet>
             <div>
                 <h1>audio details</h1>
                 <Link className="btn" to="/">Return Home</Link>

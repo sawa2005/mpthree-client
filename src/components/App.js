@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../logo.svg';
+import { Helmet, HelmetProvider } from  'react-helmet-async'
 import '../App.css';
 import Home from "./Home";
 import Signup from "./Signup";
@@ -18,7 +19,11 @@ const Private = ({ Component }) => {
 
 function App() {
   return (
-    <div className="App">
+    <HelmetProvider>
+      <div className="App">
+        <Helmet>
+          <title>mpthree</title>
+        </Helmet>
         <main className="App-main">
           <Router>
             <AuthProvider>
@@ -36,7 +41,8 @@ function App() {
         <footer>
           <p>mpthree - by <a href="https://slw.one/">Samuel Ward</a> (2024)</p>
         </footer>
-    </div>
+      </div>
+    </HelmetProvider>
   );
 }
 

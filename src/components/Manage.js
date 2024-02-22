@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { Helmet } from  'react-helmet-async'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import { AudioList } from './AudioList'
@@ -57,6 +58,9 @@ export default function Manage() {
 
     return (
         <div className='main'>
+          <Helmet>
+            <title>Manage - mpthree</title>
+          </Helmet>
           <div>
             <h1>manage</h1>
             <Link className="btn" to="/">Return Home</Link>

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Helmet } from  'react-helmet-async'
 import { useAuth } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 
@@ -28,6 +29,9 @@ export default function ForgotPassword() {
 
     return (
         <div className='signup'>
+            <Helmet>
+                <title>Password Reset - mpthree</title>
+            </Helmet>
             <div>
                 <h1>mpthree</h1>
                 <Link className="btn" to="/">Return Home</Link>

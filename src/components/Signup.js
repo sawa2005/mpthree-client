@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Helmet } from  'react-helmet-async'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -33,6 +34,9 @@ export default function Signup() {
 
     return (
         <div className='signup'>
+            <Helmet>
+                <title>Sign Up - mpthree</title>
+            </Helmet>
             <div>
                 <h1>mpthree</h1>
                 <Link className="btn" to="/">Return Home</Link>
