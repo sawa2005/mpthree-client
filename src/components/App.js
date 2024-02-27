@@ -1,5 +1,4 @@
 import React from "react";
-import logo from '../logo.svg';
 import { Helmet, HelmetProvider } from  'react-helmet-async'
 import '../App.css';
 import Home from "./Home";

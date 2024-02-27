@@ -9,7 +9,7 @@ export default function Manage() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfRef = useRef()
-    const { signup, currentUser, updateEmail, updatePassword } = useAuth()
+    const { currentUser, updateEmail, updatePassword } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate() 
@@ -77,7 +77,7 @@ export default function Manage() {
           </div>
           <div>
             <h2>Manage Uploaded Mpthrees</h2>
-            <AudioList audios={audios.filter((audio) => audio.uploaderId == currentUser.uid)} deleteAudio={deleteAudio} userId={currentUser.uid} />
+            <AudioList audios={audios.filter((audio) => audio.uploaderId === currentUser.uid)} deleteAudio={deleteAudio} userId={currentUser.uid} />
           </div>
         </div>
     )
