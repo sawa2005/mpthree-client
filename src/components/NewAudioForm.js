@@ -19,7 +19,7 @@ export function NewAudioForm({ userId }) {
     return (
         <div>
             <h2>upload</h2>
-            <form className="form" action="/api/post" method="post" encType="multipart/form-data">
+            <form className="form" action={`${process.env.REACT_APP_BACKEND_URL}/api/post/`} method="post" encType="multipart/form-data">
                 <div className="input-wrap">
                     <label id="mp3-label" htmlFor="mp3" className="btn">Choose mp3 file</label>
                     <p>{mp3}</p>

@@ -15,7 +15,7 @@ export default function Manage() {
     const navigate = useNavigate() 
 
     useEffect(() => {
-        fetch("/api/get-all")
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/api/get-all/`)
         .then((res) => res.json())
         .then((data) => {
             setAudios(data);

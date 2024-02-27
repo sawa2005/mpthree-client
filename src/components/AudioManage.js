@@ -12,7 +12,7 @@ export default function AudioManage({ songName, artistName, _id, deleteAudio }) 
 
         console.log(JSON.stringify(Object.fromEntries(formData)))
 
-        await fetch("//localhost:3001/api/update/" + _id, { 
+        await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${_id}`, { 
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export default function AudioManage({ songName, artistName, _id, deleteAudio }) 
                 <button className="btn delete" type="button" onClick={() => {
                     deleteAudio(_id);
 
-                    fetch("//localhost:3001/api/delete/" + _id, { method: 'DELETE' })
+                    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/delete/${_id}`, { method: 'DELETE' })
                         .then(response => response.text())
                         .catch(error => {
                             console.error(error);
