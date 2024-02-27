@@ -1,9 +1,7 @@
 import { AudioItem } from "./AudioItem";
 
 export function AudioList({ audios, deleteAudio, userId }) {
-  if (audios.length === 0) {
-    return <p>No mpthree's have been uploaded yet :(</p>
-  } else {
+  if (audios.length > 0) {
     return (
       <div className="audio-list">
         {audios.map(audio => {
@@ -11,5 +9,7 @@ export function AudioList({ audios, deleteAudio, userId }) {
         })}
       </div>
     )
+  } else {
+    return <p>No mpthree's have been uploaded yet :(</p>
   }
 }
