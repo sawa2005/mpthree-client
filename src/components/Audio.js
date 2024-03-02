@@ -25,8 +25,8 @@ export default function Audio() {
                 <Link className="btn" to="/">Return Home</Link>
             </div>
             <div className='audio-detail'>
-                <img className="audio-img" src={process.env.REACT_APP_BACKEND_URL + audio.imageName} alt={audio.songName + " Cover Image"} />
-                <audio src={process.env.REACT_APP_BACKEND_URL + audio.fileName} controls controlsList="nodownload"></audio>
+                <img className="audio-img" src={audio.imagePath} alt={audio.songName + " Cover Image"} />
+                <audio src={audio.path} controls controlsList="nodownload"></audio>
                 <p>Path: {audio.path}</p>
                 <p>File Name: {audio.fileName}</p>
                 <p>Song Name: {audio.songName}</p>
