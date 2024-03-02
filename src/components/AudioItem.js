@@ -25,8 +25,8 @@ export function AudioItem({ songName, artistName, path, _id, deleteAudio, userId
                 <div className="audio-main">
                     <div className="audio-top">
                         <Link to={"/audio/" + _id}>
-                            <h3>{song}</h3>
-                            <h4>{artist}</h4>
+                            <h3>{songName}</h3>
+                            <h4>{artistName}</h4>
                         </Link>
                         <AudioControls audioRef={audioRef} progressRef={progressRef} duration={duration} setTimeElapsed={setTimeElapsed} userId={userId} uploaderId={uploaderId} showManage={showManage} setShowManage={setShowManage} />
                     </div>
