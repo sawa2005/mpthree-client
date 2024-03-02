@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function AudioManage({ songName, artistName, _id, deleteAudio, setSong, setArtist }) {
+export default function AudioManage({ songName, artistName, _id, deleteAudio }) {
+    const navigate = useNavigate()
+
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -17,11 +20,8 @@ export default function AudioManage({ songName, artistName, _id, deleteAudio, se
                 body: JSON.stringify(Object.fromEntries(formData))
             })
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setSong(data.songName)
-                setArtist(data.artistName)
-            })
+            .then(data => console.log(data))
+            .then(navigate(0))
             .catch(error => {
                 console.error(error);
             });

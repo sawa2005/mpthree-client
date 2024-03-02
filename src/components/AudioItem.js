@@ -9,9 +9,6 @@ export function AudioItem({ songName, artistName, path, _id, deleteAudio, userId
     const [timeElapsed, setTimeElapsed] = useState(0)
     const [duration, setDuration] = useState(0)
 
-    const [song, setSong] = useState(songName)
-    const [artist, setArtist] = useState(artistName)
-
     const audioRef = useRef()
     const progressRef = useRef()
 
@@ -37,7 +34,7 @@ export function AudioItem({ songName, artistName, path, _id, deleteAudio, userId
                 </div>
                 <audio src={path} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
             </div>
-            {showManage ? <AudioManage songName={songName} artistName={artistName} deleteAudio={deleteAudio} _id={_id} setSong={setSong} setArtist={setArtist} /> : null}
+            {showManage ? <AudioManage songName={songName} artistName={artistName} deleteAudio={deleteAudio} _id={_id} /> : null}
         </div>
     )
 }
