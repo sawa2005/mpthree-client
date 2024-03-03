@@ -1,10 +1,12 @@
 import React from 'react'
 
 export default function ProgressBar({ progressRef, audioRef, timeElapsed, duration }) {
+    // Updates audio time when progress bar value changes
     function handleChange() {
         audioRef.current.currentTime = progressRef.current.value
     }
 
+    // Formats audio time into mm:ss
     function formatTime(time) {
         if (time && !isNaN(time)) {
             const minutes = Math.floor(time / 60)

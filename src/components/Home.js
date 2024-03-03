@@ -11,6 +11,7 @@ export default function Home() {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate()
 
+    // Fetches all audios on page load
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/api/get-all/`)
         .then((res) => res.json())
@@ -19,6 +20,7 @@ export default function Home() {
         });
     }, []);
 
+    // Logs out user and refreshes page
     async function handleLogout() {
         setError('')
 
@@ -30,6 +32,7 @@ export default function Home() {
         }
     }
 
+    // Updates audio state variable when its deleted
     function deleteAudio(id) {
         setAudios(currentAudios => {
         return currentAudios.filter(audio => audio._id !== id)
@@ -41,7 +44,10 @@ export default function Home() {
             <header>
                 <h1>mpthree</h1>
                 <div>
+                    { /* Displays error if there is one */ }
                     {error && <p className='error'>{error}</p>}
+
+                    { /* Displays different navigation based on user status */ }
                     {currentUser ? 
                         <div>
                             <p>Logged in as: {currentUser.email}</p>
@@ -56,6 +62,7 @@ export default function Home() {
                     </div>}
                 </div>
             </header>
+            { /* Only displays new audio form if the user is logged in */ }
             {currentUser ? <NewAudioForm userId={currentUser.uid} /> : <p>You have to be logged in before you can upload mpthrees</p>}
             <div>
                 <h2>Recently uploaded mpthrees</h2>

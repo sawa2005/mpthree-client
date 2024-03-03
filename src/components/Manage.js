@@ -14,6 +14,7 @@ export default function Manage() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate() 
 
+    // Fetches all audio entries
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/api/get-all/`)
         .then((res) => res.json())
@@ -22,12 +23,14 @@ export default function Manage() {
         });
     }, []);
 
+    // Updates audio state variable when its deleted
     function deleteAudio(id) {
         setAudios(currentAudios => {
         return currentAudios.filter(audio => audio._id !== id)
         })
     }
 
+    // Updates account details on account form submit
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -67,6 +70,7 @@ export default function Manage() {
           </div>
           <div>
             <h2>profile</h2>
+            { /* Displays error if there is one */ }
             {error && <p className='error'>{error}</p>}
             <form className="form" onSubmit={handleSubmit}>
               <input name='email' type='email' ref={emailRef} defaultValue={currentUser.email} required></input>
@@ -77,6 +81,7 @@ export default function Manage() {
           </div>
           <div>
             <h2>Manage Uploaded Mpthrees</h2>
+            { /* Shows list of audios (filtered to only the ones the current user uploaded) */ }
             <AudioList audios={audios.filter((audio) => audio.uploaderId === currentUser.uid)} deleteAudio={deleteAudio} userId={currentUser.uid} />
           </div>
         </div>

@@ -6,6 +6,7 @@ import {
 } from "react-icons/fi"
 
 export default function VolumeIcon({ volume }) {
+    // Returns volume icon based on volume
     let Icon
 
     if (volume >= 70) {

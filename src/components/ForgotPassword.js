@@ -10,6 +10,7 @@ export default function ForgotPassword() {
     const [message, setMessage] = useState('')
     const [loading, setLoading] = useState(false)
 
+    // Sends password reset email on form submit
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -36,11 +37,13 @@ export default function ForgotPassword() {
                 <h1>mpthree</h1>
                 <Link className="btn" to="/">Return Home</Link>
                 <h2>Reset Password</h2>
+                { /* Displays error if there is one */ }
                 {error && <p className='error'>{error}</p>}
                 <form className='form' onSubmit={handleSubmit}>
                     <input name='email' type='email' ref={emailRef} placeholder='Email' required></input>
                     <input className='btn' type='submit' value='Reset Password' disabled={loading}/>
                 </form><br />
+                { /* Displays message if there is one */ }
                 {message && <p className='success'>{message}</p>}
                 <Link className='btn' to="/login">Cancel</Link>
             </div><br />

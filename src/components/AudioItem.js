@@ -12,6 +12,7 @@ export function AudioItem({ songName, artistName, path, _id, deleteAudio, userId
     const audioRef = useRef()
     const progressRef = useRef()
 
+    // Sets audio duration once it loads
     function onLoadedMetadata() {
         const seconds = audioRef.current.duration
         setDuration(seconds)
@@ -34,6 +35,7 @@ export function AudioItem({ songName, artistName, path, _id, deleteAudio, userId
                 </div>
                 <audio src={path} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
             </div>
+            { /* Shows audio manage based on state variable */ }
             {showManage ? <AudioManage songName={songName} artistName={artistName} deleteAudio={deleteAudio} _id={_id} /> : null}
         </div>
     )

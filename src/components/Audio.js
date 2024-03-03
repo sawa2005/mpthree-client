@@ -6,6 +6,7 @@ export default function Audio() {
     const { _id } = useParams();
     const [audio, setAudio] = useState({});
 
+    // Fetch audio data when id value changes
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/api/get-one/${_id}`)
             .then((res) => res.json())

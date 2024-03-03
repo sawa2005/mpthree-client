@@ -1,11 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 
-import {
-    FiPlay,
-    FiPause,
-    FiEdit
-} from "react-icons/fi"
-
+// Icon imports
+import { FiPlay, FiPause, FiEdit } from "react-icons/fi"
 import VolumeIcon from './VolumeIcon'
 import { IconContext } from 'react-icons'
 
@@ -16,6 +12,7 @@ export default function AudioControls({ progressRef, audioRef, setTimeElapsed, d
 
     const playAnimationRef = useRef()
 
+    // Animates audio slider and timer
     const repeat = useCallback(async () => {
         await new Promise((resolve) => {
             if (audioRef.current) {
@@ -35,10 +32,12 @@ export default function AudioControls({ progressRef, audioRef, setTimeElapsed, d
         playAnimationRef.current = requestAnimationFrame(repeat)
     }, [audioRef, duration, progressRef, setTimeElapsed])
 
+    // Toggles audio playing status
     function togglePlayPause() {
         setIsPlaying((prev) => !prev)
     }
 
+    // Play/pause based on status
     useEffect(() => {
         if (isPlaying) {
             audioRef.current.play()
@@ -49,6 +48,7 @@ export default function AudioControls({ progressRef, audioRef, setTimeElapsed, d
         }
     }, [isPlaying, audioRef, repeat])
 
+    // Sets volume to volume slider value
     useEffect(() => {
         if (audioRef) {
             audioRef.current.volume = volume / 100
@@ -58,6 +58,7 @@ export default function AudioControls({ progressRef, audioRef, setTimeElapsed, d
     return (
         <div className='controls'>
             <IconContext.Provider value={{ size: 24, className: "react-icons" }}>
+                { /* If user uploaded the audio, show edit button */ }
                 { userId === uploaderId ?
                     <div className='edit'>
                         <button type="button" onClick={() => {setShowManage(!showManage)}}>
@@ -66,9 +67,11 @@ export default function AudioControls({ progressRef, audioRef, setTimeElapsed, d
                     </div> : null
                 }
                 <div className='volume'>
+                    { /* Shows volume slider on button click */ }
                     <button onClick={() => {setShow(!show)}}><VolumeIcon volume={volume} /></button>
                     { show ? <div className='volume-slider'><input type='range' min={0} max={100} value={volume} onChange={(e) => { setVolume(e.target.value)}} /></div> : null }
                 </div>
+                { /* Toggles play/pause button icon based on status */ }
                 <button onClick={togglePlayPause} className='play'>
                     {isPlaying ? <FiPause /> : <FiPlay />}
                 </button>

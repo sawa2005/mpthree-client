@@ -11,6 +11,7 @@ export default function Login() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
+    // Signs in user on form submit
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -36,6 +37,7 @@ export default function Login() {
                 <h1>mpthree</h1>
                 <Link className="btn" to="/">Return Home</Link>
                 <h2>Log In</h2>
+                { /* Displays error if there is one */ }
                 {error && <p className='error'>{error}</p>}
                 <form className='form' onSubmit={handleSubmit}>
                     <input name='email' type='email' ref={emailRef} placeholder='Email' required></input>

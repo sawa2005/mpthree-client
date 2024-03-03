@@ -10,6 +10,7 @@ import Audio from "./Audio";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
 import { Navigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Redirects to login page if user is not logged in
 const Private = ({ Component }) => {
   const { currentUser } = useAuth()
 

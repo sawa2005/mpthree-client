@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom'
 export default function AudioManage({ songName, artistName, _id, deleteAudio }) {
     const navigate = useNavigate()
 
+    // Updates audio entry and refreshes page on form submit
     async function handleSubmit(e) {
         e.preventDefault()
 
         let formEl = document.getElementById('manage-form')
         let formData = new FormData(formEl)
-
-        console.log(JSON.stringify(Object.fromEntries(formData)))
 
         await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${_id}`, { 
                 method: 'PATCH',
@@ -35,6 +34,7 @@ export default function AudioManage({ songName, artistName, _id, deleteAudio }) 
             <div className='manage-controls'>
                 <input className= "btn" type="submit" value="Update" />
                 <button className="btn delete" type="button" onClick={() => {
+                    // Delete audio entry on button click
                     deleteAudio(_id);
 
                     fetch(`${process.env.REACT_APP_BACKEND_URL}/api/delete/${_id}`, { method: 'DELETE' })

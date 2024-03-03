@@ -4,12 +4,14 @@ export function NewAudioForm({ userId }) {
     const [mp3, setMp3] = useState('No current file')
     const [image, setImage] = useState('No current image')
 
+    // Sets currently selected mp3 name
     function handleMp3Change(e) {
         if (e.target.files[0] !== undefined) {
             setMp3(e.target.files[0].name)
         }
     }
 
+    // Sets currently selected image name
     function handleImageChange(e) {
         if (e.target.files[0] !== undefined) {
             setImage(e.target.files[0].name)
