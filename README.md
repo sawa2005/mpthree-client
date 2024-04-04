@@ -8,9 +8,13 @@ This website was created as part of a final project in the university course Web
 
 ## Getting Started
 
+Note that to have this website fully functioning in a local environment you'll need to install and run my API from [https://github.com/sawa2005/mpthree-api/] and fill in the necessary environment variables.
+
 ### Dependencies
 
 * npm [https://www.npmjs.com/]
+* Firebase Authentication [https://firebase.google.com/docs/auth]
+* mpthree API [https://github.com/sawa2005/mpthree-api/]
 
 ### Installing
 
@@ -23,15 +27,15 @@ git clone https://github.com/sawa2005/mpthree-client.git
 ```
 npm i
 ```
+* Install and run the API (instructions in its repository)
+* Create Firebase project & enable authentication, then connect it to the app by entering environment variables [https://youtu.be/PKwu15ldZ7k]
 
 ### Executing program
 
-* To run the app in localhost simply use:
+* To run the app in localhost simply use (run the API with the same command first in a seperate terminal):
 ```
 npm start
 ```
-
-Note that to have this website fully functioning in a local environment you'll need to install and run my API from [https://github.com/sawa2005/mpthree-api/] and fill in the necessary environment variables.
 
 ## Authors
 
